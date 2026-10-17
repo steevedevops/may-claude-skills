@@ -1,0 +1,57 @@
+<!doctype html>
+<!--
+  Painel do iPad 13″ (2064 x 2752 em 2x). Faixa de N x 1032 x 1376, um dia/tela por vez:
+  o slide tem default 0 porque o panorama inteiro passaria de 8000 px (limite de quadro).
+  Tela k ocupa x = k*1032. Device: moldura 676 (padding 18), print 640 x 853.
+-->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Painel iPad</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="position: relative; width: {{rootW}}px; height: 1376px; overflow: hidden; background: #FUNDO; font-family: 'Manrope', system-ui, sans-serif; color: #TEXTO">
+<div style="position: absolute; top: 0; left: {{stripX}}px; width: 2064px; height: 1376px">
+
+<svg width="2064" height="1376" viewBox="0 0 2064 1376" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<!-- fundo contínuo -->
+</svg>
+
+<div style="position: absolute; left: 86px; top: 110px; width: 860px; display: flex; flex-direction: column; gap: 16px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 4px; color: #DESTAQUE">EYEBROW</span>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 70px; line-height: 1.02">Título <span style="color: #DESTAQUE">destaque</span></h1>
+<p style="margin: 0; font-size: 28px; line-height: 1.35; font-weight: 500; color: #SUB">Subtítulo</p>
+</div>
+
+<div style="position: absolute; left: 178px; top: 480px; width: 676px; padding: 18px; box-sizing: border-box; border-radius: 46px; background: #MOLDURA; box-shadow: 0 40px 80px rgba(0,0,0,0.4)">
+<img src="/_blob/PRINT_IPAD_1" alt="Descrição da tela 1 no iPad" style="display: block; width: 640px; height: 853px; border-radius: 28px; object-fit: cover; object-position: top">
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"slide":{"editor":"int","min":-1,"max":1,"default":0},"$preview":{"width":1032,"height":1376}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const slide = parseInt(this.props.slide ?? 0, 10);
+    const W = 1032;
+    const N = 2;
+    const whole = !(slide >= 0);
+    return {
+      rootW: whole ? W * N : W,
+      stripX: whole ? 0 : -slide * W
+    };
+  }
+}
+</script>
+</body>
+</html>

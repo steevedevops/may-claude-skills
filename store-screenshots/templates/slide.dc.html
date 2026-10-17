@@ -1,0 +1,36 @@
+<!doctype html>
+<!--
+  Quadro de um print. Copie como iOS-k.dc.html / Play-k.dc.html / iPad-k.dc.html.
+  - iOS:  platform="ios"     slide="k-1"  430 x 932
+  - Play: platform="android" slide="k-1"  430 x 764 (troque width/height/hint-size/$preview)
+  - iPad: name="Tablet" (sem platform) slide="k-1"  1032 x 1376
+  O <helmet> repete o link de fontes do Main.
+-->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>iOS-1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 430px; height: 932px; overflow: hidden">
+<dc-import name="Main" platform="ios" slide="0" hint-size="430px,932px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":430,"height":932}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

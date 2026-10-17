@@ -1,0 +1,36 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "AGORA_RFC3339"},
+  "title": "NomeDoApp — Screenshots das lojas",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "designSystems": [],
+  "notes": {
+    "t0": {"kind": "title1", "x": 0, "y": -300, "maxW": 1290, "text": "Panorama celular — os prints se encaixam lado a lado"},
+    "t1": {"kind": "title1", "x": 0, "y": 1052, "maxW": 1450, "text": "App Store · iPhone 6,9″ · exportar 3× = 1290 × 2796"},
+    "t2": {"kind": "title1", "x": 0, "y": 2364, "maxW": 1450, "text": "Google Play · telefone · exportar 1080 × 1920"},
+    "t3": {"kind": "title1", "x": 0, "y": 3508, "maxW": 2400, "text": "Google Play · Recurso gráfico · exportar 1024 × 500"},
+    "t4": {"kind": "title1", "x": 0, "y": 4388, "maxW": 2400, "text": "iPad 13″ — painel base"},
+    "t5": {"kind": "title1", "x": 0, "y": 5884, "maxW": 2400, "text": "App Store · iPad 13″ · exportar 2× = 2064 × 2752"}
+  },
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 1290, "h": 932, "title": "Panorama completo"},
+    "iOS-1.dc.html": {"x": 0, "y": 1312, "w": 430, "h": 932, "title": "iOS 1 · Tela"},
+    "iOS-2.dc.html": {"x": 510, "y": 1312, "w": 430, "h": 932, "title": "iOS 2 · Tela"},
+    "iOS-3.dc.html": {"x": 1020, "y": 1312, "w": 430, "h": 932, "title": "iOS 3 · Tela"},
+    "Play-1.dc.html": {"x": 0, "y": 2624, "w": 430, "h": 764, "title": "Play 1 · Tela"},
+    "Play-2.dc.html": {"x": 510, "y": 2624, "w": 430, "h": 764, "title": "Play 2 · Tela"},
+    "Play-3.dc.html": {"x": 1020, "y": 2624, "w": 430, "h": 764, "title": "Play 3 · Tela"},
+    "Play-Feature.dc.html": {"x": 0, "y": 3708, "w": 1024, "h": 500, "title": "Recurso gráfico"},
+    "Tablet.dc.html": {"x": 0, "y": 4611, "w": 1032, "h": 1376, "title": "Painel iPad"},
+    "iPad-1.dc.html": {"x": 0, "y": 6107, "w": 1032, "h": 1376, "title": "iPad 1 · Tela"},
+    "iPad-2.dc.html": {"x": 1112, "y": 6107, "w": 1032, "h": 1376, "title": "iPad 2 · Tela"}
+  },
+  "order": [
+    "Main.dc.html",
+    "iOS-1.dc.html", "iOS-2.dc.html", "iOS-3.dc.html",
+    "Play-1.dc.html", "Play-2.dc.html", "Play-3.dc.html",
+    "Play-Feature.dc.html",
+    "Tablet.dc.html", "iPad-1.dc.html", "iPad-2.dc.html"
+  ]
+}

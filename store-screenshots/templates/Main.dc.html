@@ -1,0 +1,85 @@
+<!doctype html>
+<!--
+  Esqueleto do panorama. Troque:
+  - N (aqui 3 prints = 1290 px; some 430 por print) em width, viewBox, rootW e max do slide
+  - cores (#FUNDO, #TEXTO, #DESTAQUE, #SUB, #MOLDURA), fontes e o fundo contínuo
+  - /_blob/ICONE e /_blob/PRINT_k pelas URLs devolvidas no upload
+  Print k ocupa x = k*430 … k*430+430. Android mostra só y = 84…848.
+-->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Panorama</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="position: relative; width: {{rootW}}px; height: {{rootH}}px; overflow: hidden; background: #FUNDO; font-family: 'Manrope', system-ui, sans-serif; color: #TEXTO">
+<div style="position: absolute; top: {{stripY}}px; left: {{stripX}}px; width: 1290px; height: 932px">
+
+<!-- fundo contínuo atravessando todos os prints (metáfora do domínio) -->
+<svg width="1290" height="932" viewBox="0 0 1290 932" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<!-- linhas, grade, rota, trajetória... -->
+</svg>
+
+<!-- PRINT 1 · abertura: ícone + wordmark + título -->
+<div style="position: absolute; left: 36px; top: 100px; display: flex; align-items: center; gap: 12px">
+<img src="/_blob/ICONE" alt="Ícone do app" style="display: block; width: 58px; height: 58px; border-radius: 15px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700">NomeDoApp</span>
+</div>
+<div style="position: absolute; left: 36px; top: 184px; width: 360px; display: flex; flex-direction: column; gap: 12px">
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 42px; line-height: 1.04">Título da legenda <span style="color: #DESTAQUE">parte em destaque</span></h1>
+<p style="margin: 0; font-size: 16px; line-height: 1.4; font-weight: 500; color: #SUB">Subtítulo da legenda</p>
+</div>
+
+<!-- PRINT 2 · eyebrow + título (repita para cada print, somando 430 no left) -->
+<div style="position: absolute; left: 466px; top: 100px; width: 360px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2.5px; color: #DESTAQUE">EYEBROW</span>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 40px; line-height: 1.04">Título <span style="color: #DESTAQUE">destaque</span></h1>
+<p style="margin: 0; font-size: 16px; line-height: 1.4; font-weight: 500; color: #SUB">Subtítulo</p>
+</div>
+
+<!-- devices: left = k*430 + 56, top ≈ 380–420, saem pela base -->
+<div style="position: absolute; left: 56px; top: 420px; width: 318px; padding: 9px; box-sizing: border-box; border-radius: 46px; background: #MOLDURA; box-shadow: 0 30px 60px rgba(0,0,0,0.3)">
+<img src="/_blob/PRINT_1" alt="Descrição da tela 1" style="display: block; width: 300px; height: 667px; border-radius: 38px; object-fit: cover; object-position: top">
+</div>
+<div style="position: absolute; left: 486px; top: 400px; width: 318px; padding: 9px; box-sizing: border-box; border-radius: 46px; background: #MOLDURA; box-shadow: 0 30px 60px rgba(0,0,0,0.3)">
+<img src="/_blob/PRINT_2" alt="Descrição da tela 2" style="display: block; width: 300px; height: 667px; border-radius: 38px; object-fit: cover; object-position: top">
+</div>
+
+<!-- fichas: um dado REAL do print, metade sobre a borda do device, dentro de y 84…848 -->
+<div style="position: absolute; left: 236px; top: 700px; display: flex; flex-direction: column; gap: 2px; padding: 12px 16px; border-radius: 14px; background: #FFFFFF; color: #TEXTO; box-shadow: 0 16px 34px rgba(0,0,0,0.25)">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; line-height: 1">VALOR DO PRINT</span>
+<span style="font-size: 12px; font-weight: 600">Rótulo</span>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"platform":{"editor":"enum","options":["ios","android"],"default":"ios"},"slide":{"editor":"int","min":-1,"max":2,"default":-1},"$preview":{"width":1290,"height":932}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const platform = this.props.platform ?? 'ios';
+    const slide = parseInt(this.props.slide ?? -1, 10);
+    const W = 430;
+    const N = 3;
+    const android = platform === 'android';
+    const whole = !(slide >= 0);
+    return {
+      rootW: whole ? W * N : W,
+      rootH: android ? 764 : 932,
+      stripX: whole ? 0 : -slide * W,
+      stripY: android ? -84 : 0
+    };
+  }
+}
+</script>
+</body>
+</html>
